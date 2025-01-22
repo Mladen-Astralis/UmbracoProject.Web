@@ -1,0 +1,20 @@
+﻿@inherits UmbracoViewPage<TeamElementsViewModel>
+
+<div class="col-md-3">
+	<div class="teammember">
+		@if(Model.ShowImage)
+		{
+			<img class="img-fluid" src="@Model.TeamImage.MediaUrl()" />
+		}
+		else
+		{
+			<img class="img-fluid" src="/images/no-image.png" />
+		}
+		<p>
+			<span class="font-weight-bold">@Model.Name</span><br />
+		</p>
+		<p>
+			@Html.Raw(Model.Description)
+		</p>
+	</div>
+</div>

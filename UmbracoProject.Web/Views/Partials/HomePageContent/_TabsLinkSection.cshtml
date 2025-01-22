@@ -1,0 +1,9 @@
+﻿@inherits UmbracoViewPage<TabsLinkSectionViewModel>
+
+<div class="col mt-5 mb-5">
+	<h5 class="heading_h3">@Model.Title</h5>
+	@foreach(var data in Model.TestName)
+	{
+		@await Html.RenderContentBlockListPartial(data)
+	}
+</div>

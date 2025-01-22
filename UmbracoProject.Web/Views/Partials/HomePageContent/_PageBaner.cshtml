@@ -1,0 +1,10 @@
+﻿@inherits UmbracoViewPage<PageBanerViewModel>
+
+@if(Model.BanerImage != null)
+{
+	<div class="pr-0; pl-0; container-fluid;">
+		<div>
+			<img alt="@Model.AltTitle" class="banerImage img-fluid" src="@Model.BanerImage.MediaUrl()" />
+		</div>
+	</div>
+}

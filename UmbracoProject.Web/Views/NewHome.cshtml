@@ -1,0 +1,9 @@
+﻿@inherits UmbracoViewPage<NewHomePageViewModel>
+@{
+	Layout = "Master.cshtml";
+}
+
+@foreach(var data in Model.MainContent)
+{
+	@await Html.RenderContentBlockListPartial(data)
+}

@@ -1,0 +1,55 @@
+﻿@inherits UmbracoViewPage<AboutUsPageViewModel>
+@{
+	Layout = "Master.cshtml";
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.Title))
+{
+<div class="jumbotron text-center jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-1">@Model.Title</h1>
+	</div>
+</div>
+}
+
+<div class="container">
+	<div class="row section">
+		<div class="col-md-12">
+			<div class="container">
+				<div class="row section">
+					@if (!string.IsNullOrWhiteSpace(Model.Description.ToString()))
+					{
+					<div class="col-md-9">
+						@Html.Raw(Model.Description)
+					</div>
+					}
+				</div>
+				@if (Model.DateAndTime != "01/01/0001 0:00")
+				{
+					<div class="row section">
+						@Model.DateAndTime
+					</div>
+				}
+				@if (Model.DropDown.Any())
+				{
+					<div class="row section">
+						@Model.DropDown
+					</div>
+				}
+
+				@if( Model.DropDownMultiple.HasValue())
+				{
+					<div class="row section">
+						<p><strong>CARS LIST</strong></p>
+						<ul>
+							@foreach(var item in Model.DropDownMultiple)
+							{
+								<li>@item</li>
+							}
+						</ul
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</div>

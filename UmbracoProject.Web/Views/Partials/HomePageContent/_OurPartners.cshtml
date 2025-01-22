@@ -1,0 +1,8 @@
+﻿@inherits UmbracoViewPage<OurPartnersViewModel>
+@{
+	string url = Model.Url != null ? Model.Url.Url : "";
+}
+
+<a href="@url" target="@Model.Url.Target">
+	<img class="imag_size img-fluid" src="@Model.Image.MediaUrl()" />
+</a>

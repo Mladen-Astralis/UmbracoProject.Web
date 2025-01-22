@@ -1,0 +1,31 @@
+﻿@inherits UmbracoViewPage<TeamPageViewModel>
+@{
+	Layout = "Master.cshtml";
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.Title))
+{
+	<div class="jumbotron text-center jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-1">@Model.Title</h1>
+		</div>
+	</div>
+}
+
+<div class="container">
+	<div class="row section">
+		@if (!string.IsNullOrWhiteSpace(Model.Description.ToString()))
+		{
+			<div class="col-md-12">
+				@Html.Raw(Model.Description)
+			</div>
+		}
+	</div>
+	<div class="row section">
+	@foreach(var data in Model.Elements)
+	{
+		@await Html.RenderBlockListPartial(data);
+	}
+	</div>
+
+</div>

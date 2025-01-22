@@ -1,0 +1,13 @@
+﻿@inherits UmbracoViewPage<BlockInfoSectionViewModel>
+
+<div class="col-12 pt-4 pb-4" style="background-color:#@Model.BackgroundColor">
+	<div class="row align-items-center text-center ml-5 mr-5">
+	@foreach(var data in Model.Items)
+	{
+		<div class="col text-white">
+			@await Html.RenderContentBlockListPartial(data)
+		</div>
+	}
+	</div>
+
+</div>

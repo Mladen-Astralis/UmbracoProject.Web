@@ -1,0 +1,15 @@
+﻿@inherits UmbracoViewPage<OurPartnersSectionViewModel>
+
+<div class="col-12 pt-4 pb-4" style="background-color: #e9f8f5">
+	<div class="row align-items-center ml-5 mr-5">
+		<div class="col-12">
+			<h5>@Model.Title</h5>
+		</div>
+		@foreach (var data in Model.Items)
+		{
+			<div class="col">
+				@await Html.RenderContentBlockListPartial(data)
+			</div>
+		}
+	</div>
+</div>

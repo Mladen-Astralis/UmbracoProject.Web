@@ -1,0 +1,77 @@
+﻿@model NavigationViewModel
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand pb-2" href="@Model.HomeUrl">Umbraco</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            @{
+                var maxLevel = Model.MaxLevel;
+                RenderNavItems(Model, maxLevel);
+            }
+        </ul>
+    </div>
+</nav>
+
+@functions {
+    void RenderNavItems(NavigationViewModel navModel, int maxLevel)
+    {
+        if (navModel.NavigationItems != null)
+        {
+            @foreach (var item in navModel.NavigationItems)
+            {
+                if (!item.IsHiddenFromNavigation)
+                {
+                    @if (item.NavigationSubItems == null || !item.NavigationSubItems.Any())
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@item.NavigationUrl">@item.NavigationTitle</a>
+                        </li>
+                    }
+                    else if (item.Level < maxLevel)
+                    {
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="@item.NavigationUrl" id="navbarDropdownMenuLink"> @item.NavigationTitle </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @{
+                                    RenderSubNavItems(item, maxLevel);
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+            }
+        }
+    }
+}
+
+@functions {
+    void RenderSubNavItems(NavigationItemViewModel item, int maxLevel)
+    {
+        @foreach (var subItem in item.NavigationSubItems)
+        {
+            @if (!subItem.IsHiddenFromNavigation)
+            {
+                @if (subItem.NavigationSubItems == null || !subItem.NavigationSubItems.Any())
+                {
+                    <li><a class="dropdown-item" href="@subItem.NavigationUrl">@subItem.NavigationTitle</a></li>
+                }
+                else if (subItem.Level < maxLevel)
+                {
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="@subItem.NavigationUrl">@subItem.NavigationTitle</a>
+                        <ul class="dropdown-menu">
+                            @{
+                                RenderSubNavItems(subItem, maxLevel);
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        }
+    }
+}

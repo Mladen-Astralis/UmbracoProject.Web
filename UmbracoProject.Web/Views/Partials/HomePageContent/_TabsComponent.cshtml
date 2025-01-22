@@ -1,0 +1,10 @@
+﻿@inherits UmbracoViewPage<TabsComponentViewModel>
+
+<div class="container">
+	<div class="row">
+		@foreach(var data in Model.SectionItems)
+		{
+			@await Html.RenderContentBlockListPartial(data)
+		}
+	</div>
+</div>

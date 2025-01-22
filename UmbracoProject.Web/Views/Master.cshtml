@@ -1,0 +1,33 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Welcome - UmbracoTV</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/main.css" />
+	<link rel="stylesheet" href="/css/styles.css" />
+	<link rel="stylesheet" href="/css/RTE.css" />
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	@await Component.InvokeAsync("Navigation")
+
+	@RenderBody()
+
+	<!-- Footer -->
+	@await Component.InvokeAsync("Footer")
+
+	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

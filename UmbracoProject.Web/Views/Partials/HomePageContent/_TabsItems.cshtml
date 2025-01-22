@@ -1,0 +1,17 @@
+﻿@inherits UmbracoViewPage<TabsItemsViewModel>
+
+<div class="mt-3 mb-3">
+	<div style="text-decoration: underline;">
+		@Model.NameForItem
+	</div>
+	<ul style="border-bottom: 1px solid #ebebeb; padding-bottom: 30px; margin-bottom: 5px;">
+		@foreach(var data in Model.Url)
+		{
+			<li><a href="@data.Url" target="@data.Target">@data.Name</a></li>
+		}
+	</ul>
+	@if (Model.InformationLink != null)
+	{
+		<a href="@Model.InformationLink.Url" target="@Model.InformationLink.Target">@Model.InformationLink.Name</a>
+	}
+</div>

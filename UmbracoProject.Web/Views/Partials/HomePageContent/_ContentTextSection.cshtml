@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<ContentTextSectionViewModel>
+
+<div class="col-12 pt-4 pb-4 text-center d-flex align-items-center justify-content-center" style="background-color:#@Model.BackgroundColor">
+	<div class="col-6">
+		<div class="heading_h3">@Model.Title</div>
+		<div class="paragraph">
+			@Html.Raw(Model.Description)
+		</div>
+		@if(Model.Url != null)
+		{
+			<a class="btn" style="background-color:#@Model.BtnBackgroundColor; color:#@Model.BtnTitleColor" href="@Model.Url.Url" target="@Model.Url.Target">@Model.Url.Name</a>
+		}
+	</div>
+</div>
